@@ -1,0 +1,14 @@
+http://fake_Domain {
+    redir https://fake_Domain{url}
+}
+https://fake_Domain {
+  root /srv/www
+  tls email
+  gzip
+  timeouts none
+  proxy /forward_Path 127.0.0.1:10086 {
+    websocket
+    header_upstream -Origin
+  }
+  header / Strict-Transport-Security "max-age=31536000;"
+}
